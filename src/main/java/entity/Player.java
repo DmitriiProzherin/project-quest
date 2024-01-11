@@ -1,5 +1,6 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,6 +9,8 @@ import lombok.*;
 @Getter
 @Setter
 public class Player {
+    @JsonProperty
     private String name;
+    @JsonProperty("class")
     private Classes playerClass;
 }

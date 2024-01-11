@@ -22,7 +22,10 @@ public class PlayerServlet extends HttpServlet {
         Object object = session.getAttribute("player");
 
         if (object != null && object.getClass() == Player.class) {
-            response.getWriter().write(object.toString());
+            ObjectMapper mapper = new ObjectMapper();
+            String player = mapper.writeValueAsString(object);
+
+            response.getWriter().write(player);
         }
         else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -34,6 +37,9 @@ public class PlayerServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         ObjectMapper mapper = new ObjectMapper();
+
+//        Player player = mapper.readValue(getRequestBody(request), Player.class);
+
         JsonNode node = mapper.readTree(getRequestBody(request));
 
         JsonNode name = node.get("name");

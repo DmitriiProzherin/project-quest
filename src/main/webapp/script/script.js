@@ -1,3 +1,18 @@
+$(function () {
+
+});
+
+function getPlayer(){
+    $.ajax({
+       url: "player",
+       type: "GET",
+       success: [
+           function (data) {
+
+           }
+       ]
+    });
+}
 function createPlayer(){
     let data = {
         'name': `${$("#player_name").val()}`,
@@ -11,8 +26,12 @@ function createPlayer(){
        data: JSON.stringify(data),
        success: [
            function () {
-           // console.info(data);
-           $("#create-player-div").remove();
+               let button = document.createElement('button');
+               //document.body.append(button);
+               button.textContent = "Посмотреть игрока";
+               button.id = "#get-player-button";
+               button.onclick(getPlayer());
+               $("#create-player-div").append(button);
            }
        ],
        error: function (msg) {
