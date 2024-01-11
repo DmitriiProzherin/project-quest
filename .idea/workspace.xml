@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="Added get player button">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="Finished player servlet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Classes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Classes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PlayerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PlayerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/script/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +231,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704920682053</updated>
       <workItem from="1704920683068" duration="4034000" />
-      <workItem from="1704925414505" duration="21101000" />
+      <workItem from="1704925414505" duration="22281000" />
     </task>
     <task id="LOCAL-00001" summary="Added player controller">
       <option name="closed" value="true" />
@@ -284,7 +281,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704937977684</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Finished player servlet">
+      <option name="closed" value="true" />
+      <created>1704946547585</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704946547585</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +309,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added player controller" />
     <MESSAGE value="Added get player button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added get player button" />
+    <MESSAGE value="Finished player servlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished player servlet" />
   </component>
 </project>

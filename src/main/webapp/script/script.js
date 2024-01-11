@@ -10,7 +10,10 @@ function getPlayer(){
            function (data) {
                 console.info(JSON.stringify(data));
            }
-       ]
+       ],
+       error: function (msg) {
+           console.error(msg);
+       }
     });
 }
 function createPlayer(){
@@ -30,12 +33,12 @@ function createPlayer(){
                console.info('Player created');
            }
            else {
-               console.log('Player edited');
+               console.info('Player edited');
            }
            }
        ],
        error: function (msg) {
-           console.error(`Player wasn\'t updated ${msg}`);
+           console.error(msg);
        }
 
     });
@@ -45,13 +48,11 @@ function deletePlayer(){
     $.ajax({
        url: "player",
        type: "DELETE",
-       success: function (data, text, xhs) {
-           if (xhs === 204) {
-               console.info('No player')
-           }
-           else {
-               console.info('Player deleted')
-           }
+       success: function () {
+            console.info('Player deleted');
+       },
+       error: function (msg) {
+           console.error(msg);
        }
     });
 }

@@ -83,11 +83,11 @@ public class PlayerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response){
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("player") == null) {
-            response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 

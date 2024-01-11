@@ -8,7 +8,6 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
-@JsonRootName("player")
 public class Player {
     @JsonProperty
     private String name;
