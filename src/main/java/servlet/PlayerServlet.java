@@ -14,11 +14,11 @@ import java.io.*;
 
 import static java.util.Objects.isNull;
 
-@WebServlet(value = "/player")
+@WebServlet(urlPatterns = {"/player", "/html/player"})
 public class PlayerServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
 
         Object object = session.getAttribute("player");
 
@@ -29,12 +29,12 @@ public class PlayerServlet extends HttpServlet {
 
             String playerJSON = mapper.writeValueAsString(object);
 
-            response.setContentType("application/json");
+            resp.setContentType("application/json");
 
-            response.getWriter().write(playerJSON);
+            resp.getWriter().write(playerJSON);
         }
         else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
