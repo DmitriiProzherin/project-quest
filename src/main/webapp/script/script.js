@@ -57,3 +57,18 @@ function deletePlayer(){
        }
     });
 }
+
+function startGame(){
+    $.ajax({
+        url: "init",
+        type: "GET",
+        success: [
+            function (data) {
+                console.info(JSON.stringify(data));
+            }
+        ],
+        error: function (msg) {
+            console.error(msg);
+        }
+    });
+}

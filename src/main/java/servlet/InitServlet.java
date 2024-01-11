@@ -1,7 +1,8 @@
 package servlet;
 
 import entity.Game;
-import jakarta.servlet.ServletException;
+import entity.Location;
+import entity.Player;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,10 +11,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/game", "html/game"})
+@WebServlet(urlPatterns = {"/init", "/html/init"})
 public class InitServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
 
         if (session.getAttribute("player") == null) {
@@ -21,10 +22,16 @@ public class InitServlet extends HttpServlet {
             return;
         }
 
-        Game game = new Game();
+        if (session.getAttribute("game") == null) {
+            Player player = (Player) session.getAttribute("player");
 
-        session.setAttribute("game", game);
+            Game game = new Game(player, Location.HOME);
 
-        resp.setStatus(HttpServletResponse.SC_CREATED);
+            session.setAttribute("game", game);
+
+            resp.setStatus(HttpServletResponse.SC_CREATED);
+
+            resp.sendRedirect("/location");
+        }
     }
 }

@@ -2,12 +2,11 @@ package entity;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Player {
     @JsonProperty
     private String name;
