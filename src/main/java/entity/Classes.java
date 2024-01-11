@@ -1,7 +1,7 @@
 package entity;
 
 public enum Classes {
-    ROQUE,
+    ROGUE,
     MAGE,
     WARRIOR
 }
