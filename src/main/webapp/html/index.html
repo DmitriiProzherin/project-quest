@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script src="/script/script.js" defer></script>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="create-player-div">
+    <h2>Создание персонажа</h2>
+    <label for="player_name">Имя персонажа:</label>
+    <input type="text" id="player_name" name="player_name" placeholder="Имя" required>
+
+    <label for="player_class">Класс персонажа:</label>
+    <select id="player_class" name="player_class" required>
+        <option value="warrior">Воин</option>
+        <option value="mage">Маг</option>
+        <option value="rogue">Разбойник</option>
+    </select>
+
+    <button type="submit" onclick="createPlayer()">Создать персонажа</button>
+</div>
+</body>
+</html>
