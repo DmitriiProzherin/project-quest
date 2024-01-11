@@ -1,31 +1,37 @@
 package servlet;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Classes;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import entity.Player;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.commons.lang3.EnumUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
+
+import static java.util.Objects.isNull;
 
 @WebServlet(value = "/player")
 public class PlayerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
+
         Object object = session.getAttribute("player");
 
         if (object != null && object.getClass() == Player.class) {
-            ObjectMapper mapper = new ObjectMapper();
-            String player = mapper.writeValueAsString(object);
+            ObjectMapper mapper = JsonMapper.builder()
+                    .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+                    .build();
 
-            response.getWriter().write(player);
+            String playerJSON = mapper.writeValueAsString(object);
+
+            response.setContentType("application/json");
+
+            response.getWriter().write(playerJSON);
         }
         else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -36,38 +42,54 @@ public class PlayerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
 
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = JsonMapper.builder()
+                .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+                .build();
 
-//        Player player = mapper.readValue(getRequestBody(request), Player.class);
+        try {
+            String json = getRequestBody(request);
 
-        JsonNode node = mapper.readTree(getRequestBody(request));
+            Player player = mapper.readValue(json, Player.class);
 
-        JsonNode name = node.get("name");
-        JsonNode gameClass = node.get("class");
+            if (player.getName().isBlank()) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
 
-        if (name == null || gameClass == null || !EnumUtils.isValidEnum(Classes.class, gameClass.asText().toUpperCase())) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-            return;
-        }
+            if (isNull(player.getPlayerClass())) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
 
-        if (session.getAttribute("player") != null) {
-            Player player = (Player) session.getAttribute("player");
-            player.setName(name.asText());
-            player.setPlayerClass(EnumUtils.getEnum(Classes.class, gameClass.asText().toUpperCase()));
-
-            response.setStatus(HttpServletResponse.SC_OK);
-        } else {
-            Player player = new Player(name.asText(), EnumUtils.getEnum(Classes.class, gameClass.asText().toUpperCase()));
+            if (session.getAttribute("player") == null) {
+                response.setStatus(HttpServletResponse.SC_CREATED);
+            }
+            else {
+                response.setStatus(HttpServletResponse.SC_OK);
+            }
 
             session.setAttribute("player", player);
 
-            response.setStatus(HttpServletResponse.SC_CREATED);
+            response.setContentType("application/json");
+
+            Writer writer = response.getWriter();
+
+            mapper.writeValue(writer, player);
         }
+        catch (Exception exception) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
+
     }
 
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response){
         HttpSession session = request.getSession();
+
+        if (session.getAttribute("player") == null) {
+            response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            return;
+        }
 
         session.removeAttribute("player");
 
