@@ -29,9 +29,9 @@ public class InitServlet extends HttpServlet {
 
             session.setAttribute("game", game);
 
-            resp.setStatus(HttpServletResponse.SC_CREATED);
+            session.setAttribute("ip", req.getRemoteAddr());
 
-            resp.sendRedirect("/location");
+            resp.setStatus(HttpServletResponse.SC_CREATED);
         }
     }
 }

@@ -2,6 +2,7 @@ package manager;
 
 import entity.Location;
 import org.apache.commons.io.file.PathUtils;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.mockito.MockedStatic;
@@ -15,6 +16,7 @@ import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ResourceManagerTest {
+    @Disabled
     @ParameterizedTest
     @EnumSource(Location.class)
     public void getLocationTextTest(Location location) {

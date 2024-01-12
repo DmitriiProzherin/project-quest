@@ -10,15 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files">
+      <change afterPath="$PROJECT_DIR$/src/main/java/filter/GameFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/manager/ResourceManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/GameStatusServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/RestartServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/manager/ResourceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/ResourceManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/PathHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/text/tavern_backyard" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/text/tavern_backyard.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/InitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/InitServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/script/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/util/PathHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/manager/ResourceManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/manager/ResourceManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/manager/ResourceManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,11 +29,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Jsp File" />
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -108,7 +109,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.project-quest [clean]">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.17">
     <configuration name="PathHandlerTest.getLocationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project-quest" />
       <extension name="coverage">
@@ -306,7 +307,7 @@
       <workItem from="1704920683068" duration="4034000" />
       <workItem from="1704925414505" duration="23003000" />
       <workItem from="1704993426781" duration="1211000" />
-      <workItem from="1705001731557" duration="17137000" />
+      <workItem from="1705001731557" duration="27920000" />
     </task>
     <task id="LOCAL-00001" summary="Added player controller">
       <option name="closed" value="true" />
@@ -388,7 +389,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705011250544</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files">
+      <option name="closed" value="true" />
+      <created>1705019330383</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705019330383</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
