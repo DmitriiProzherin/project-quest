@@ -64,7 +64,7 @@ function startGame(){
         type: "GET",
         success: [
             function (data) {
-                console.info(JSON.stringify(data));
+                console.info(data);
             }
         ],
         error: function (msg) {

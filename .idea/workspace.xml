@@ -9,26 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="Finished player servlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/PathHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/cave.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/city_temple.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/forest.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/hidden_temple.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/river.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/square.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/tavern.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/text/tavern_backyard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/util/PathHandlerTest.java" afterDir="false" />
+    <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entity/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/InitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/InitServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/manager/ResourceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/ResourceManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/PathHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/text/tavern_backyard" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/text/tavern_backyard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/script/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/util/PathHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/manager/ResourceManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +32,8 @@
         <option value="JavaScript File" />
         <option value="Jsp File" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -72,7 +62,10 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "HTTP Request.rest-api_2 | #1.executor": "Run",
     "JUnit.LocationServletTest.getLocationTest.executor": "Run",
+    "JUnit.PathHandlerTest.getLocationTest (1).executor": "Run",
     "JUnit.PathHandlerTest.getLocationTest.executor": "Run",
+    "JUnit.ResourceManagerTest.executor": "Run",
+    "JUnit.ResourceManagerTest.getLocationTest (1).executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "Maven.project-quest [clean].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -97,6 +90,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
       <recent name="$PROJECT_DIR$/src/main/webapp/html" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -107,42 +101,14 @@
       <recent name="servlet" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PathHandlerTest.getLocationTest (1)">
-    <configuration name="rest-api_2 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_2.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="LocationServletTest.getLocationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project-quest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="servlet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="servlet" />
-      <option name="MAIN_CLASS_NAME" value="servlet.LocationServletTest" />
-      <option name="METHOD_NAME" value="getLocationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PathHandlerTest.getLocationTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="project-quest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="util" />
-      <option name="MAIN_CLASS_NAME" value="util.PathHandlerTest" />
-      <option name="METHOD_NAME" value="getLocationTest(entity.Location)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="HttpClient.HttpRequestRunConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Maven.project-quest [clean]">
     <configuration name="PathHandlerTest.getLocationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project-quest" />
       <extension name="coverage">
@@ -154,6 +120,37 @@
       <option name="PACKAGE_NAME" value="util" />
       <option name="MAIN_CLASS_NAME" value="util.PathHandlerTest" />
       <option name="METHOD_NAME" value="getLocationTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResourceManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-quest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="manager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="manager" />
+      <option name="MAIN_CLASS_NAME" value="manager.ResourceManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResourceManagerTest.getLocationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project-quest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="manager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="manager" />
+      <option name="MAIN_CLASS_NAME" value="manager.ResourceManagerTest" />
+      <option name="METHOD_NAME" value="getLocationTest(entity.Location)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -279,20 +276,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.rest-api_2 | #1" />
-      <item itemvalue="JUnit.LocationServletTest.getLocationTest" />
-      <item itemvalue="JUnit.PathHandlerTest.getLocationTest" />
-      <item itemvalue="JUnit.PathHandlerTest.getLocationTest (1)" />
+      <item itemvalue="JUnit.ResourceManagerTest" />
       <item itemvalue="Maven.project-quest [clean]" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.17" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PathHandlerTest.getLocationTest (1)" />
-        <item itemvalue="JUnit.PathHandlerTest.getLocationTest" />
         <item itemvalue="Maven.project-quest [clean]" />
-        <item itemvalue="JUnit.LocationServletTest.getLocationTest" />
-        <item itemvalue="HTTP Request.rest-api_2 | #1" />
+        <item itemvalue="JUnit.ResourceManagerTest" />
+        <item itemvalue="JUnit.ResourceManagerTest.getLocationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +306,7 @@
       <workItem from="1704920683068" duration="4034000" />
       <workItem from="1704925414505" duration="23003000" />
       <workItem from="1704993426781" duration="1211000" />
-      <workItem from="1705001731557" duration="9268000" />
+      <workItem from="1705001731557" duration="17137000" />
     </task>
     <task id="LOCAL-00001" summary="Added player controller">
       <option name="closed" value="true" />
@@ -388,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705005951077</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files">
+      <option name="closed" value="true" />
+      <created>1705011250544</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1705011250544</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +409,8 @@
     <MESSAGE value="Added player controller" />
     <MESSAGE value="Added get player button" />
     <MESSAGE value="Finished player servlet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished player servlet" />
+    <MESSAGE value="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

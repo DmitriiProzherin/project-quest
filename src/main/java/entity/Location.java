@@ -1,5 +1,7 @@
 package entity;
 
+import lombok.ToString;
+
 public enum Location {
     HOME,
     SQUARE,

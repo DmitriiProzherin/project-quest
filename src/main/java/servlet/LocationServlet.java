@@ -1,17 +1,18 @@
 package servlet;
 
 import entity.Game;
+import manager.ResourceManager;
+
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.net.URISyntaxException;
 
-import static util.PathHandler.getLocation;
+import static java.util.Objects.isNull;
 
 @WebServlet(urlPatterns = {"/location", "/html/location"})
 public class LocationServlet extends HttpServlet {
@@ -21,7 +22,17 @@ public class LocationServlet extends HttpServlet {
 
         Game game = (Game) session.getAttribute("game");
 
-        String text = FileUtils.readFileToString(getLocation(game.getLocation()), StandardCharsets.UTF_8);
+        if (isNull(game)) {
+            throw new RuntimeException();
+        }
+
+        String text;
+
+        try {
+            text = ResourceManager.getLocationText(game.getLocation());
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
 
         resp.setContentType("text/plain");
 
