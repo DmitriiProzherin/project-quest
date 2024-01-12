@@ -40,7 +40,7 @@ button.ingame-button {
     background-color: #7f9380;
     color: #fff;
     padding: 10px;
-    margin: 16px;
+    margin: 6px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -67,7 +67,6 @@ select {
 }
 
 .game-container-div {
-    width: 90%;
     background-color: #ded4d4;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import util.Request;
 
 import java.io.*;
 
@@ -39,15 +40,15 @@ public class PlayerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
+    protected void doPost(HttpServletRequest req, HttpServletResponse response) throws IOException {
+        HttpSession session = req.getSession();
 
         ObjectMapper mapper = JsonMapper.builder()
                 .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
                 .build();
 
         try {
-            String json = getRequestBody(request);
+            String json = Request.getRequestBody(req);
 
             Player player = mapper.readValue(json, Player.class);
 
@@ -94,15 +95,5 @@ public class PlayerServlet extends HttpServlet {
         session.removeAttribute("player");
 
         response.setStatus(HttpServletResponse.SC_OK);
-    }
-
-    private String getRequestBody(HttpServletRequest request) throws IOException {
-        StringBuilder builder = new StringBuilder();
-        BufferedReader reader = request.getReader();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            builder.append(line);
-        }
-        return builder.toString();
     }
 }

@@ -146,6 +146,33 @@ function buildGamePage(){
     $('#main-text-field').text(text);
 }
 
+function goTo(location) {
+
+    let data = {
+        'location': `${location}`,
+    }
+
+    $.ajax({
+        url: 'location',
+        type: 'POST',
+        contentType: 'application/json',
+        async: false,
+        data: JSON.stringify(data),
+        success: [
+            function () {
+                let text = getLocationText();
+                $('#main-text-field').text(text);
+
+                console.info('Location updated');
+            }
+        ],
+        error: function (msg) {
+            console.error(msg);
+        }
+
+    });
+}
+
 let createForm = "<div id=\"create-player-div\">\n" +
     "    <h2>Создание персонажа</h2>\n" +
     "    <label for=\"player_name\">Имя персонажа:</label>\n" +
@@ -167,9 +194,16 @@ let gameForm = "<div class=\"game-container-div\">\n" +
     "    <p id='main-text-field'></p>\n" +
     "\n" +
     "    <div class=\"button-row\">\n" +
-    "        <button class='ingame-button' onclick=\"showMessage('Вы выбрали первую кнопку')\">Кнопка 1</button>\n" +
     "        <button class='ingame-button' onclick=\"restartGame()\">Начать сначала</button>\n" +
-    "        <button class='ingame-button' onclick=\"showMessage('Вы выбрали третью кнопку')\">Кнопка 3</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('cave')\">Пещера</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('city_temple')\">Городской храм</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('tavern')\">Таверна</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('tavern_backyard')\">Задний дворик таверны</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('forest')\">Лес</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('river')\">Река</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('square')\">Площадь</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('hidden_temple')\">Скрытый храм</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('forest_camp')\">Лесной лагерь</button>\n" +
     "    </div>\n" +
     "\n" +
     "    <p id=\"message\"></p>\n" +
