@@ -93,6 +93,22 @@ function getLocationText(){
     return text;
 }
 
+function getDirections(){
+    let directions;
+    $.ajax({
+        url: "directions",
+        type: "GET",
+        async: false,
+        success: function (data) {
+            directions = data;
+        },
+        error: function (msg) {
+            console.error(msg);
+        }
+    });
+    return directions;
+}
+
 function restartGame(){
     $.ajax({
         url: "restart",
@@ -101,6 +117,7 @@ function restartGame(){
             function () {
                 window.location.reload();
                 console.info('Game restarted');
+
             }
         ],
         error: function (msg) {
@@ -161,7 +178,20 @@ function goTo(location) {
         success: [
             function () {
                 let text = getLocationText();
+                let directions = getDirections();
+
                 $('#main-text-field').text(text);
+
+                $('.button-row').empty();
+
+                $.each(directions, function (key, val) {
+                    let button = $('<button>').text(val);
+                    button.addClass('ingame-button');
+                    button.on('click', () => goTo(val));
+                    $('.button-row').append(button);
+
+                    console.log(val);
+                });
 
                 console.info('Location updated');
             }
@@ -173,7 +203,7 @@ function goTo(location) {
     });
 }
 
-let createForm = "<div id=\"create-player-div\">\n" +
+let createForm = "<div id=\"menu-container-div\">\n" +
     "    <h2>Создание персонажа</h2>\n" +
     "    <label for=\"player_name\">Имя персонажа:</label>\n" +
     "    <input type=\"text\" id=\"player_name\" name=\"player_name\" placeholder=\"Имя\" required>\n" +
@@ -189,7 +219,7 @@ let createForm = "<div id=\"create-player-div\">\n" +
     "    <button type=\"submit\" onclick=\"startGame()\">Начать игру</button>\n" +
     "</div>";
 
-let gameForm = "<div class=\"game-container-div\">\n" +
+let gameForm = "<div id=\"game-container-div\">\n" +
     "    <h1>Добро пожаловать на нашу страницу!</h1>\n" +
     "    <p id='main-text-field'></p>\n" +
     "\n" +
@@ -201,7 +231,7 @@ let gameForm = "<div class=\"game-container-div\">\n" +
     "        <button class='ingame-button' onclick=\"goTo('tavern_backyard')\">Задний дворик таверны</button>\n" +
     "        <button class='ingame-button' onclick=\"goTo('forest')\">Лес</button>\n" +
     "        <button class='ingame-button' onclick=\"goTo('river')\">Река</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('square')\">Площадь</button>\n" +
+    "        <button class='ingame-button' onclick=\"goTo('city_gate')\">Городские ворота</button>\n" +
     "        <button class='ingame-button' onclick=\"goTo('hidden_temple')\">Скрытый храм</button>\n" +
     "        <button class='ingame-button' onclick=\"goTo('forest_camp')\">Лесной лагерь</button>\n" +
     "    </div>\n" +

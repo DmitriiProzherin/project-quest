@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import entity.Game;
 import entity.Location;
-import jakarta.servlet.ServletException;
 import manager.ResourceManager;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -47,7 +46,7 @@ public class LocationServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
 
         Game game = (Game) session.getAttribute("game");
@@ -60,16 +59,12 @@ public class LocationServlet extends HttpServlet {
 
         JsonNode node = mapper.readTree(json);
 
-        System.out.println(node);
-
         if (isNull(node)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             throw new RuntimeException("Empty is request");
         }
 
         JsonNode locationNode = node.get("location");
-
-        System.out.println(locationNode);
 
         if (isNull(locationNode)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

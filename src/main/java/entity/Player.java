@@ -8,8 +8,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Player {
-    @JsonProperty
+    @JsonProperty(required = true)
     private String name;
-    @JsonProperty("class")
+    @JsonProperty(required = true, value = "class")
     private Classes playerClass;
+    @JsonProperty
+    private boolean blessing;
 }

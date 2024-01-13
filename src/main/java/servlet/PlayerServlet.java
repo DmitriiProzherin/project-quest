@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import mapper.Mapper;
 import util.Request;
 
 import java.io.*;
@@ -24,11 +25,8 @@ public class PlayerServlet extends HttpServlet {
         Object object = session.getAttribute("player");
 
         if (object != null && object.getClass() == Player.class) {
-            ObjectMapper mapper = JsonMapper.builder()
-                    .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
-                    .build();
 
-            String playerJSON = mapper.writeValueAsString(object);
+            String playerJSON = Mapper.objAsJSONString(object);
 
             resp.setContentType("application/json");
 

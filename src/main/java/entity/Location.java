@@ -1,10 +1,8 @@
 package entity;
 
-import lombok.ToString;
-
 public enum Location {
     HOME,
-    SQUARE,
+    CITY_GATE,
     TAVERN,
     TAVERN_BACKYARD,
     CITY_TEMPLE,
