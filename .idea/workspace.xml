@@ -9,19 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="-Added LocationServlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/manager/GameManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mapper/Mapper.java" afterDir="false" />
+    <list default="true" id="1be0a529-647f-4418-922b-b8221d528856" name="Changes" comment="-Added movement between locations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/DirectionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter/GameFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/GameFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/InitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/InitServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/LocationServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/PlayerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/PlayerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/text/square.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/text/city_gate.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/script/action.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/script/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/script/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -310,7 +304,7 @@
       <workItem from="1704920683068" duration="4034000" />
       <workItem from="1704925414505" duration="23003000" />
       <workItem from="1704993426781" duration="1211000" />
-      <workItem from="1705001731557" duration="41693000" />
+      <workItem from="1705001731557" duration="44624000" />
     </task>
     <task id="LOCAL-00001" summary="Added player controller">
       <option name="closed" value="true" />
@@ -416,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705074655947</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="-Added movement between locations">
+      <option name="closed" value="true" />
+      <created>1705111603056</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705111603056</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +442,24 @@
     <MESSAGE value="-Added game init servlet&#10;-Added text&#10;-Added testing for getting text files" />
     <MESSAGE value="-Added RestartServlet&#10;-Added GameStatusServlet&#10;-Added GameFilter" />
     <MESSAGE value="-Added LocationServlet" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Added LocationServlet" />
+    <MESSAGE value="-Added movement between locations" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Added movement between locations" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/filter/GameFilter.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/filter/GameFilter.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

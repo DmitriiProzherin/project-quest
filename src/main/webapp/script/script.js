@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     let inGame = false;
 
     $.ajax({
@@ -13,71 +13,70 @@ $(function() {
     if (!inGame) {
         buildLoginPage();
         console.log("Not in the game!");
-    }
-    else {
+    } else {
         buildGamePage();
         console.log("In the game!");
     }
 });
 
 
-function getPlayer(){
+function getPlayer() {
     $.ajax({
-       url: "player",
-       type: "GET",
-       success: [
-           function (data) {
+        url: "player",
+        type: "GET",
+        success: [
+            function (data) {
                 console.info(JSON.stringify(data));
 
-           }
-       ],
-       error: function (msg) {
-           console.error(msg);
-       }
+            }
+        ],
+        error: function (msg) {
+            console.error(msg);
+        }
     });
 }
-function createPlayer(){
+
+function createPlayer() {
     let data = {
         'name': `${$("#player_name").val()}`,
         'class': `${$("#player_class").val()}`
     }
 
     $.ajax({
-       url: 'player',
-       type: 'POST',
-       contentType: 'application/json',
-       data: JSON.stringify(data),
-       success: [
-           function (data, textStatus, xhr) {
-           if (xhr.status === 201) {
-               console.info('Player created');
-           }
-           else {
-               console.info('Player edited');
-           }
-           }
-       ],
-       error: function (msg) {
-           console.error(msg);
-       }
+        url: 'player',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: [
+            function (data, textStatus, xhr) {
+                if (xhr.status === 201) {
+                    console.info('Player created');
+                } else {
+                    console.info('Player edited');
+                }
+            }
+        ],
+        error: function (msg) {
+            console.error(msg);
+        }
 
     });
 }
 
-function deletePlayer(){
+function deletePlayer() {
     $.ajax({
-       url: "player",
-       type: "DELETE",
-       success: function () {
+        url: "player",
+        type: "DELETE",
+        success: function () {
             console.info('Player deleted');
-       },
-       error: function (msg) {
-           console.error(msg);
-       }
+        },
+        error: function (msg) {
+            console.error(msg);
+        }
     });
 }
 
-function getLocationText(){
+function getLocationText() {
     let text = "";
     $.ajax({
         url: "location",
@@ -93,7 +92,7 @@ function getLocationText(){
     return text;
 }
 
-function getDirections(){
+function getDirections() {
     let directions;
     $.ajax({
         url: "directions",
@@ -109,7 +108,7 @@ function getDirections(){
     return directions;
 }
 
-function restartGame(){
+function restartGame() {
     $.ajax({
         url: "restart",
         type: "GET",
@@ -126,7 +125,7 @@ function restartGame(){
     });
 }
 
-function startGame(){
+function startGame() {
     $.ajax({
         url: "init",
         type: "GET",
@@ -142,7 +141,7 @@ function startGame(){
     });
 }
 
-function buildLoginPage(){
+function buildLoginPage() {
     document.body.innerHTML = '';
 
     let tempContainer = document.createElement("div");
@@ -150,7 +149,7 @@ function buildLoginPage(){
     document.body.appendChild(tempContainer);
 }
 
-function buildGamePage(){
+function buildGamePage() {
     document.body.innerHTML = '';
 
     let tempContainer = document.createElement("div");
@@ -158,9 +157,28 @@ function buildGamePage(){
     tempContainer.style.width = "80%";
     document.body.appendChild(tempContainer);
 
+    updateView();
+}
+
+function updateControls(directions) {
+    $('.button-row').empty();
+
+    $.each(directions, function (key, val) {
+        let button = $('<button>').text(val);
+        button.addClass('ingame-button');
+        button.on('click', () => goTo(val));
+        $('.button-row').append(button);
+
+        console.log(val);
+    });
+}
+
+function updateView() {
     let text = getLocationText();
+    let directions = getDirections();
 
     $('#main-text-field').text(text);
+    updateControls(directions);
 }
 
 function goTo(location) {
@@ -176,22 +194,8 @@ function goTo(location) {
         async: false,
         data: JSON.stringify(data),
         success: [
-            function () {
-                let text = getLocationText();
-                let directions = getDirections();
-
-                $('#main-text-field').text(text);
-
-                $('.button-row').empty();
-
-                $.each(directions, function (key, val) {
-                    let button = $('<button>').text(val);
-                    button.addClass('ingame-button');
-                    button.on('click', () => goTo(val));
-                    $('.button-row').append(button);
-
-                    console.log(val);
-                });
+            () => {
+                updateView();
 
                 console.info('Location updated');
             }
@@ -206,10 +210,10 @@ function goTo(location) {
 let createForm = "<div id=\"menu-container-div\">\n" +
     "    <h2>Создание персонажа</h2>\n" +
     "    <label for=\"player_name\">Имя персонажа:</label>\n" +
-    "    <input type=\"text\" id=\"player_name\" name=\"player_name\" placeholder=\"Имя\" required>\n" +
+    "    <input type=\"text\" id=\"player_name\" name=\"player_name\" placeholder=\"Имя\" style='height: 30px' required>\n" +
     "\n" +
     "    <label for=\"player_class\">Класс персонажа:</label>\n" +
-    "    <select id=\"player_class\" name=\"player_class\" required>\n" +
+    "    <select id=\"player_class\" name=\"player_class\" style='height: 30px' required>\n" +
     "        <option value=\"warrior\">Воин</option>\n" +
     "        <option value=\"mage\">Маг</option>\n" +
     "        <option value=\"rogue\">Разбойник</option>\n" +
@@ -219,22 +223,21 @@ let createForm = "<div id=\"menu-container-div\">\n" +
     "    <button type=\"submit\" onclick=\"startGame()\">Начать игру</button>\n" +
     "</div>";
 
-let gameForm = "<div id=\"game-container-div\">\n" +
-    "    <h1>Добро пожаловать на нашу страницу!</h1>\n" +
-    "    <p id='main-text-field'></p>\n" +
-    "\n" +
-    "    <div class=\"button-row\">\n" +
-    "        <button class='ingame-button' onclick=\"restartGame()\">Начать сначала</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('cave')\">Пещера</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('city_temple')\">Городской храм</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('tavern')\">Таверна</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('tavern_backyard')\">Задний дворик таверны</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('forest')\">Лес</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('river')\">Река</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('city_gate')\">Городские ворота</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('hidden_temple')\">Скрытый храм</button>\n" +
-    "        <button class='ingame-button' onclick=\"goTo('forest_camp')\">Лесной лагерь</button>\n" +
-    "    </div>\n" +
-    "\n" +
-    "    <p id=\"message\"></p>\n" +
-    "</div>";
+let gameForm = `<div id="game-container-div">
+    <div id="playerInfoContainer">
+        <div>
+            <p class="infoText">Player - Name</p>
+            <p class="infoText">Class - Mage</p>
+        </div>
+        <button onclick="restartGame()" id="infoButton">Рестарт</button>
+    </div>
+    
+    <div id="main-content-div">
+        <p id='main-text-field' style='text-align: left'></p>
+    </div>
+
+    <div class="button-row">
+    </div>
+
+    <p id="message"></p>
+</div>`;

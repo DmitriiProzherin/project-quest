@@ -16,7 +16,7 @@ import java.io.*;
 
 import static java.util.Objects.isNull;
 
-@WebServlet(urlPatterns = {"/player", "/html/player"})
+@WebServlet(urlPatterns = {"/player"})
 public class PlayerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

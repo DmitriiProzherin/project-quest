@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
 
 import static java.util.Objects.isNull;
 
-@WebServlet(urlPatterns = {"/location", "/html/location"})
+@WebServlet(urlPatterns = {"/location"})
 public class LocationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
