@@ -12,28 +12,30 @@ $(function () {
 
     if (!inGame) {
         buildLoginPage();
-        console.log("Not in the game!");
+        console.info("Not in the game!");
     } else {
         buildGamePage();
-        console.log("In the game!");
+        console.info("In the game!");
     }
 });
 
 
 function getPlayer() {
+    let player;
     $.ajax({
         url: "player",
         type: "GET",
+        async: false,
         success: [
             function (data) {
-                console.info(JSON.stringify(data));
-
+                player = JSON.stringify(data);
             }
         ],
         error: function (msg) {
             console.error(msg);
         }
     });
+    return player;
 }
 
 function createPlayer() {
@@ -168,17 +170,24 @@ function updateControls(directions) {
         button.addClass('ingame-button');
         button.on('click', () => goTo(val));
         $('.button-row').append(button);
-
-        console.log(val);
     });
+}
+
+function updatePlayer(player) {
+    let json = JSON.parse(player);
+    $('#player-name-p').text(json.name);
+    $('#player-class-p').text(json.class);
 }
 
 function updateView() {
     let text = getLocationText();
     let directions = getDirections();
+    let player = getPlayer();
 
     $('#main-text-field').text(text);
     updateControls(directions);
+
+    updatePlayer(player);
 }
 
 function goTo(location) {
@@ -226,8 +235,8 @@ let createForm = "<div id=\"menu-container-div\">\n" +
 let gameForm = `<div id="game-container-div">
     <div id="playerInfoContainer">
         <div>
-            <p class="infoText">Player - Name</p>
-            <p class="infoText">Class - Mage</p>
+            <p id="player-name-p"></p>
+            <p id="player-class-p"></p>
         </div>
         <button onclick="restartGame()" id="infoButton">Рестарт</button>
     </div>

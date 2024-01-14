@@ -105,12 +105,6 @@ p {
     margin-bottom: 10px;
 }
 
-
-.infoText {
-    color: #333;
-    margin: 0;
-}
-
 #infoButton {
     background-color: #2a2727;
     color: #fff;
@@ -123,4 +117,13 @@ p {
 
 #infoButton:hover {
     background-color: #696868;
+}
+
+#player-name-p {
+    text-align: left;
+    font-weight: bold;
+}
+#player-class-p {
+    text-align: left;
+    font-weight: bold;
 }
